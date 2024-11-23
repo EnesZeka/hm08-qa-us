@@ -24,12 +24,14 @@ module.exports = {
     iceCreamPlusButton: 'div.counter-plus',
     cardIcon: '//div[@class="pp-value"]/div[@class="pp-value-text" and text()="Card"]',
     paymentMethodAddedCard: 'div=Card',
+    orderTaxiButton: '.smart-button',
 
 
 
     // Modals
     phoneNumberModal: '.modal',
     paymentMethodModal: '.payment-picker .modal',
+    carSearchModal: '.order-subbody',
 
     //Displays
     iceCreamDisplay: 'div.counter-value',
@@ -127,6 +129,11 @@ module.exports = {
             await iceCreamPlusButton.click();
         }        
     },
+    clickOrderTaxi: async function () {
+        const orderTaxiButton = await $(this.orderTaxiButton);
+        await orderTaxiButton.waitForDisplayed();
+        await orderTaxiButton.click();  
+    }
 
 
 };

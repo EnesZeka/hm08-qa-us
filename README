@@ -1,0 +1,70 @@
+# Order Automation Testing Project
+
+## Project Overview
+
+This project automates the testing of the order creation workflow for an e-commerce platform. The tests verify that users can select plans, fill out address and payment details, add items to their order, and provide instructions to drivers. The suite ensures the system's functionality across all key user actions.
+
+---
+
+## Features
+
+### 1. UI Testing:
+- Verify addresses are filled and validated.
+- Ensure phone numbers are correctly submitted and verified.
+- Test adding payment methods, such as credit cards.
+- Confirm items are successfully added to the cart and ordered.
+
+### 2. Order Validation:
+- Validate switching states for product options like blankets and handkerchiefs.
+- Test item quantity updates for products like ice creams.
+- Ensure driver messages are correctly set and displayed.
+
+---
+
+## Technologies and Techniques
+
+- **Node.js**: Executes JavaScript code for the tests.
+- **WebdriverIO**: Automates user interactions in the browser.
+- **Jest**: Handles testing and assertions.
+- **Async/Await**: Manages asynchronous actions like page loads and API responses.
+- **Dynamic Data Generation**: Creates random data for phone numbers and card details.
+
+---
+
+## Prerequisites
+
+Make sure the following requirements are met before running the tests:
+- **Node.js**: For running the test suite.
+- **npm**: To manage dependencies.
+- **Browser Driver**: Installed and configured for WebdriverIO.
+
+---
+
+## How to Run the Project
+
+To run the tests, follow these steps:
+
+1. Ensure all dependencies are installed:
+   ```bash
+   npm install
+
+2. Run the test suite:
+   ```bash
+   npm install
+
+This command will execute the tests using the WebdriverIO framework and display the results in the terminal.
+
+## Example Tests
+
+### Test 1: Select Supportive Plan
+This test verifies that when navigating to the page, the user can select the "Supportive" plan.
+
+### Test 2: Fill the Phone Number
+This test ensures that the user can correctly input a phone number, submit it, and receive a validation response.
+
+### Test 3: Add Payment Card
+This test checks if the user can add a valid card to their payment methods successfully.
+
+## Conclusion
+
+This testing project ensures that critical functionalities of the order creation process work smoothly, from selecting plans and adding products to entering payment details and verifying addresses. With WebdriverIO and Jest, this suite helps automate the entire process, providing reliable and repeatable tests.

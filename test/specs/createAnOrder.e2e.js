@@ -2,6 +2,19 @@ const page = require('../../page');
 const helper = require('../../helper')
 
 describe('Create an order', () => {
+
+    it('should set the address', async () => {
+        await browser.url(`/`)
+        await page.fillAddresses('East 2nd Street, 601', '1300 1st St');
+
+        
+        await expect($(page.fromField)).toHaveValue('East 2nd Street, 601');
+        await expect($(page.toField)).toHaveValue('1300 1st St');
+    });
+
+
+
+    
     it('should select supportive plan', async () => {
         await browser.url(`/`)
         await page.fillAddresses('East 2nd Street, 601', '1300 1st St');
@@ -27,6 +40,9 @@ describe('Create an order', () => {
     });
 
 
+
+
+
     it('should add a card', async () => {
         await browser.url(`/`)
         await page.fillAddresses('East 2nd Street, 601', '1300 1st St');
@@ -40,6 +56,9 @@ describe('Create an order', () => {
     });
 
 
+
+
+
     it('should write the driver a message', async () => {
         await browser.url(`/`)
         await page.fillAddresses('East 2nd Street, 601', '1300 1st St');
@@ -49,6 +68,9 @@ describe('Create an order', () => {
 
         await expect($(page.messageDriverField)).toHaveValue(message);
     });
+
+
+
 
 
     it('should order a Blanket and handkerchiefs', async () => {
@@ -63,6 +85,9 @@ describe('Create an order', () => {
     });
 
 
+
+
+
     it('should order 2 ice creams', async () => {
         await browser.url(`/`)
         await page.fillAddresses('East 2nd Street, 601', '1300 1st St');
@@ -74,5 +99,34 @@ describe('Create an order', () => {
 
         await expect ($(`div=${iceCreamQty}`)).toBeExisting();
     });
+
+
+
+
+    it.only('should open the car search modal', async () => {
+        await browser.url(`/`)
+        await page.fillAddresses('East 2nd Street, 601', '1300 1st St');
+
+        await page.selectSupportive();
+
+        const phoneNumber = helper.getPhoneNumber("+1");
+        await page.submitPhoneNumber(phoneNumber);
+
+        const cardNumber = helper.getCardNumber();
+        const cardCode   = helper.getCardCode();
+
+        await page.addPaymentMethodCard(cardNumber, cardCode)
+
+        const message= "Waiting outside";
+        await page.fillMessageDriver(message);
+
+
+        await page.clickOrderTaxi();
+
+        const carSearchModal = await $(page.carSearchModal); 
+
+        await expect(carSearchModal).toBeDisplayed(); 
+    });
 })
+
 
